@@ -1,11 +1,12 @@
-# First Dockerfile.
-FROM ubuntu
-LABEL MAINTAINER dj@devops.com
-RUN mkdir /codeapps
-COPY Sample.sh /codeapps/Sample.sh
-COPY testfile /codeapps/testfile
-RUN chmod +x /codeapps/Sample.sh
-WORKDIR /codeapps
-ENTRYPOINT ["sh","/codeapps/Sample.sh"]
-CMD ["/codeapps/testfile"]
-#CMD sh /codeapps/Sample.sh /codeapps/testfile
+# REST API IMPLEMENTATION WITH EXPRESS...
+
+FROM node
+label maintainer nj@devops.com
+run mkdir /code
+add node.js /code/node.js
+add data.json /code/data.json
+run npm install -y express
+run npm install -y body-parser
+expose 9000
+workdir /code
+cmd node /code/node.js
